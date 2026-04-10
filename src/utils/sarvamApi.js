@@ -188,7 +188,7 @@ export async function analyzeLegalText(text, mode = 'full') {
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 5000,
+      max_tokens: 2000,
       messages: [
         { role: 'system', content: buildSystemPrompt(mode) },
         { role: 'user', content: `Analyze this legal document:\n\n${truncatedText}` },
