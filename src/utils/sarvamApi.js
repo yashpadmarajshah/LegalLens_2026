@@ -15,7 +15,7 @@ If the document says nothing about privacy, return an empty sections array.`,
 ONLY generate cards about: account deletion, data deletion, opting out of marketing, opting out of tracking, cancellation policy, data export/portability, contacting support, appealing decisions, and what the user is allowed or not allowed to do.
 Do NOT generate cards about data collection, billing details, company rights, or anything unrelated to user rights.`,
 
-  risks: `You are LegalLens. Analyze ONLY genuine legal risks and dark patterns in this document.
+  risks: `You are LegalLens. Analyze ONLY genuine legal risks and dark patterns and data misuse/breach and vague statements in this document.
 
 ONLY flag these specific things:
 - Binding arbitration clause or waiving right to sue in court
@@ -188,7 +188,7 @@ export async function analyzeLegalText(text, mode = 'full') {
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 2000,
+      max_tokens: 5000,
       messages: [
         { role: 'system', content: buildSystemPrompt(mode) },
         { role: 'user', content: `Analyze this legal document:\n\n${truncatedText}` },
